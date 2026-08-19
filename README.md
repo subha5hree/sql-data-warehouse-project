@@ -10,28 +10,7 @@ The warehouse follows a layered architecture to improve data quality, maintainab
 
 ## 🏗️ Architecture
 
-Source Systems
-      |
-      v
-+-------------+
-|   Bronze    |  Raw Data
-|    Layer    |
-+------+------+
-       |
-       v
-+-------------+
-|   Silver    |  Cleaned & Transformed Data
-|    Layer    |
-+------+------+
-       |
-       v
-+-------------+
-|    Gold     |  Business-Ready Data
-|    Layer    |
-+------+------+
-       |
-       v
-Analytics & Reporting
+![data_architecture](docs)
 
 ## 🎯 Objectives
 
@@ -52,20 +31,24 @@ Analytics & Reporting
 
 ## 📂 Project Structure
 
-sql-data-warehouse/
-|
-├── datasets/
-│   └── raw_data/
-|
-├── scripts/
-│   ├── bronze/
-│   ├── silver/
-│   └── gold/
-|
-├── tests/
-|
-├── README.md
-└── LICENSE
+```text
+data-warehouse-project/
+│
+├── datasets/                           # Raw datasets used for the project (ERP and CRM data)
+│
+├── docs/                               # Project documentation and architecture details
+│   ├── data_architecture               # png file shows the project's architecture
+│
+├── scripts/                            # SQL scripts for ETL and transformations
+│   ├── bronze/                         # Scripts for extracting and loading raw data
+│   ├── silver/                         # Scripts for cleaning and transforming data
+│   ├── gold/                           # Scripts for creating analytical models
+│
+├── tests/                              # Test scripts and quality files
+│
+├── LICENSE                             # License information for the repository
+├── README.md                           # Project overview and instructions
+```
 
 ## 🔄 Data Pipeline
 
@@ -105,23 +88,6 @@ Responsibilities:
 - Create analytical views
 - Prepare data for reporting
 
-## 📊 Data Model
-
-The Gold layer follows a Star Schema where appropriate.
-
-                 +----------------+
-                 | Dim Customer   |
-                 +-------+--------+
-                         |
-                         |
-+----------------+       v       +----------------+
-|  Dim Product   |----> Fact     |   Dim Date     |
-+----------------+     Sales     +----------------+
-                         ^
-                         |
-                  +------+-------+
-                  | Dim Location |
-                  +--------------+
 
 ## 🧹 Data Quality
 
